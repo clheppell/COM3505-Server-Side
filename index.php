@@ -1,19 +1,19 @@
 <?php
 
-define('DS', DIRECTORY_SEPARATOR);
-define('BASE_PATH', __DIR__ . DS);
+try {
 
-require BASE_PATH.'vendor/autoload.php';
+  define('DS', DIRECTORY_SEPARATOR);
+  define('BASE_PATH', __DIR__ . DS);
 
-$app		= System\App::instance();
-$app->request  	= System\Request::instance();
-$app->route	= System\Route::instance($app->request);
+  require BASE_PATH.'vendor/autoload.php';
 
-$route		= $app->route;
+  $app		= System\App::instance();
+  $app->request  	= System\Request::instance();
+  $app->route	= System\Route::instance($app->request);
 
-header("content-type: application/json");
+  $route		= $app->route;
 
-  try {
+  header("content-type: application/json");
 
   $route->get('/average', function() {
     if ($_GET['secret'] != $_ENV['SECRET_KEY']) {
