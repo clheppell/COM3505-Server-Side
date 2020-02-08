@@ -13,7 +13,12 @@ $route		= $app->route;
 
 header("content-type: application/json");
 
-$route->any('/', function() {
+$route->get('/', function() {
+  if ($_GET['secret'] != $_ENV['SECRET_KEY']) {
+    http_response_code(401);
+    echo json_encode("Unauthorised");
+    return;
+  }
   echo json_encode("Test page");
 });
 
