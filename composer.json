@@ -1,0 +1,6 @@
+{
+    "require": {
+        "nezamy/route": "^1.2",
+        "sendgrid/sendgrid": "^7.4"
+    }
+}
